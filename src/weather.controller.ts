@@ -16,8 +16,13 @@ export class WeatherController {
     }
 
     try {
+      //using geocoding api to fetch latitude, longitude, location
       const { latitude, longitude, location } = await this.geocodeService.geocode(address);
+
+      //using weatherstack api to get address, weather information from latitude, longitude 
       const forecastData = await this.forecastService.forecast(latitude, longitude);
+
+      // console.log(forecastData);
 
       return {
         location,
